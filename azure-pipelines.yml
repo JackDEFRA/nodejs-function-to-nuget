@@ -16,30 +16,16 @@ steps:
 
   - script: npm ci
 
-  - task: CopyFiles@2
-    inputs:
-      Contents: |
-        **/*
-        !.git/**/*
-      TargetFolder: '$(Build.ArtifactStagingDirectory)/functions'
-
-  - task: ArchiveFiles@2
-    inputs:
-      rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
-      includeRootFolder: false
-      archiveType: 'zip'
-      archiveFile: '$(Build.ArtifactStagingDirectory)/Functions.zip'
-
   - task: NuGetCommand@2
     displayName: 'NuGet pack'
     inputs:
       command: pack
-      packagesToPack: '$(Build.ArtifactStagingDirectory)/functions/managedserver.nuspec'
+      packagesToPack: '$(Build.SourcesDirectory)/managedserver.nuspec'
       versioningScheme: byBuildNumber
 
   - task: NuGetCommand@2
     displayName: 'NuGet push'
     inputs:
       command: push
-      packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
+      packagesToPush: '$(Build.SourcesDirectory)/*.nupkg'
       publishVstsFeed: '$(NugetFeed)'
