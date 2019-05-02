@@ -14,7 +14,7 @@ steps:
     inputs:
       versionSpec: '10.x' # replace this value with the version that you need for your project
 
-  - script: npm install
+  - script: npm ci
 
   - task: CopyFiles@2
     inputs:
