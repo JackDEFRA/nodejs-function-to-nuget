@@ -1,6 +1,6 @@
 const appInsights = require('applicationinsights');
 const { AzureApplicationInsightsLogger } = require('winston-azure-application-insights');
-const { winston } = require('winston');
+const winston  = require('winston');
 
 // Create an app insights client with the given key
 appInsights.setup(process.env.APPINSIGHTS_INSTRUMENTATIONKEY)
