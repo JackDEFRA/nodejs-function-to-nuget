@@ -1,0 +1,8 @@
+{
+  "name": "sample-node-js-function",
+  "dependencies": {
+    "winston": "^3.2.1",
+    "winston-azure-application-insights": "^2.0",
+    "applicationinsights": "^1.3"
+  }
+}

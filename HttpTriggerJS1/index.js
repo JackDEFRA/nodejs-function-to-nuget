@@ -1,5 +1,21 @@
-module.exports = function (context, req) {
-    context.log('JavaScript HTTP trigger function processed a request.');
+const appInsights = require('applicationinsights');
+const { AzureApplicationInsightsLogger } = require('winston-azure-application-insights');
+const { winston } = require('winston');
+
+// Create an app insights client with the given key
+appInsights.setup(process.env.APPINSIGHTS_INSTRUMENTATIONKEY)
+    .setAutoCollectConsole(false);
+
+const logger = winston.createLogger({
+    transports: [
+        new AzureApplicationInsightsLogger({
+            insights: appInsights
+        }),
+    ]
+});
+
+module.exports = (context, req) => {
+    logger.debug('JavaScript HTTP trigger function processed a request.');
 
     if (req.query.name || (req.body && req.body.name)) {
         context.res = {
