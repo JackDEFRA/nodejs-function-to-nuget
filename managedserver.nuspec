@@ -8,6 +8,6 @@
     <description>DEFRA.SampleFunction - Sample NodeJS Function App</description>
   </metadata>
   <files>
-    <file src="**/*.*" target="" exclude=".git/*.*" />
+    <file src="**/*.*" target="" exclude=".git/**/*.*" />
   </files>
 </package>
