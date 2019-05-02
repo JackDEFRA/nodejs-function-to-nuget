@@ -18,6 +18,9 @@ steps:
 
   - task: CopyFiles@2
     inputs:
+      Contents: |
+        **/*
+        !.git/**/*
       TargetFolder: '$(Build.ArtifactStagingDirectory)/functions'
 
   - task: ArchiveFiles@2
