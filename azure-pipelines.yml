@@ -27,5 +27,5 @@ steps:
     displayName: 'NuGet push'
     inputs:
       command: push
-      packagesToPush: '$(Build.SourcesDirectory)/*.nupkg'
+      packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
       publishVstsFeed: '$(NugetFeed)'
